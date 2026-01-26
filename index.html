@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Corinthians - Escalação de Jogadores</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://logodownload.org/wp-content/uploads/2016/11/Corinthians-logo-escudo.png">
+</head>
+<body>
+    <!-- Banner Corinthians -->
+    <div class="corinthians-banner">
+        <div class="banner-content">
+            <img src="https://logodownload.org/wp-content/uploads/2016/11/Corinthians-logo-escudo.png" alt="Escudo Corinthians" class="escudo-banner">
+            <div class="banner-text">
+                <h1>SPORT CLUB CORINTHIANS PAULISTA</h1>
+                <p>Fundado em 1º de setembro de 1910</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header com navegação -->
+        <header class="header">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#" class="nav-link active" data-section="home"><i class="fas fa-home"></i> Início</a></li>
+                    <li><a href="#" class="nav-link" data-section="players"><i class="fas fa-users"></i> Elenco</a></li>
+                    <li><a href="#" class="nav-link" data-section="lineup"><i class="fas fa-futbol"></i> Escalação</a></li>
+                    <li><a href="#" class="nav-link" data-section="club-info"><i class="fas fa-landmark"></i> O Clube</a></li>
+                    <li><a href="#" class="nav-link" data-section="idols"><i class="fas fa-trophy"></i> Ídolos</a></li>
+                    <li><a href="#" class="nav-link" data-section="titles"><i class="fas fa-medal"></i> Títulos</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Conteúdo principal -->
+        <main class="main-content">
+            <!-- Seção Home -->
+            <section id="home-section" class="content-section active">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h2><i class="fas fa-shield-alt"></i> BEM-VINDO AO SISTEMA CORINTHIANS</h2>
+                        <p class="hero-subtitle">Gerencie o elenco, escalações e explore a história do Todo Poderoso</p>
+                        
+                        <div class="quick-stats">
+                            <div class="quick-stat">
+                                <i class="fas fa-user-friends"></i>
+                                <div>
+                                    <h3>Elenco Atual</h3>
+                                    <p id="current-squad">32 jogadores</p>
+                                </div>
+                            </div>
+                            <div class="quick-stat">
+                                <i class="fas fa-trophy"></i>
+                                <div>
+                                    <h3>Títulos Mundiais</h3>
+                                    <p>2 conquistas</p>
+                                </div>
+                            </div>
+                            <div class="quick-stat">
+                                <i class="fas fa-stadium"></i>
+                                <div>
+                                    <h3>Estádio</h3>
+                                    <p>Neo Química Arena</p>
+                                </div>
+                            </div>
+                            <div class="quick-stat">
+                                <i class="fas fa-heart"></i>
+                                <div>
+                                    <h3>Torcida</h3>
+                                    <p>+30 milhões</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card" data-section="players">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3>Gerenciar Elenco</h3>
+                        <p>Visualize e edite informações dos jogadores do Corinthians</p>
+                    </div>
+                    <div class="feature-card" data-section="lineup">
+                        <div class="feature-icon">
+                            <i class="fas fa-tactical-board"></i>
+                        </div>
+                        <h3>Montar Escalação</h3>
+                        <p>Crie formações táticas com os jogadores disponíveis</p>
+                    </div>
+                    <div class="feature-card" data-section="club-info">
+                        <div class="feature-icon">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3>História do Clube</h3>
+                        <p>Conheça a trajetória do Sport Club Corinthians Paulista</p>
+                    </div>
+                    <div class="feature-card" data-section="titles">
+                        <div class="feature-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Galeria de Títulos</h3>
+                        <p>Explore todas as conquistas do Timão</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Elenco -->
+            <section id="players-section" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> ELENCO CORINTHIANS</h2>
+                    <div class="controls">
+                        <button id="add-player" class="btn btn-corinthians">
+                            <i class="fas fa-plus"></i> Novo Jogador
+                        </button>
+                        <div class="search-box">
+                            <input type="text" id="search-player" placeholder="Buscar jogador...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filters">
+                    <div class="filter-group">
+                        <label for="filter-position"><i class="fas fa-map-marker-alt"></i> Posição:</label>
+                        <select id="filter-position">
+                            <option value="all">Todas</option>
+                            <option value="GOL">Goleiro</option>
+                            <option value="ZAG">Zagueiro</option>
+                            <option value="LAT">Lateral</option>
+                            <option value="VOL">Volante</option>
+                            <option value="MEI">Meia</option>
+                            <option value="ATA">Atacante</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="filter-status"><i class="fas fa-heartbeat"></i> Status:</label>
+                        <select id="filter-status">
+                            <option value="all">Todos</option>
+                            <option value="disponivel">Disponível</option>
+                            <option value="lesionado">Lesionado</option>
+                            <option value="suspenso">Suspenso</option>
+                        </select>
+                    </div>
+                    <button id="clear-filters" class="btn btn-secondary">
+                        <i class="fas fa-filter"></i> Limpar Filtros
+                    </button>
+                </div>
+
+                <div class="players-grid" id="players-grid">
+                    <!-- Jogadores serão carregados aqui -->
+                </div>
+            </section>
+
+            <!-- Seção Escalação -->
+            <section id="lineup-section" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tactical-board"></i> ESCALAÇÃO DO TIMÃO</h2>
+                    <div class="formation-controls">
+                        <div class="formation-selector">
+                            <label for="formation"><i class="fas fa-chess-board"></i> Formação:</label>
+                            <select id="formation">
+                                <option value="4-4-2">4-4-2 Tradicional</option>
+                                <option value="4-3-3">4-3-3 Ofensivo</option>
+                                <option value="4-2-3-1">4-2-3-1 Moderno</option>
+                                <option value="3-5-2">3-5-2 Europeu</option>
+                                <option value="5-3-2">5-3-2 Defensivo</option>
+                            </select>
+                        </div>
+                        <div class="match-info">
+                            <input type="text" id="match-against" placeholder="Adversário" value="São Paulo FC">
+                            <input type="date" id="match-date" value="2024-06-15">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Campo de futebol estilo Corinthians -->
+                <div class="soccer-field-corinthians">
+                    <div class="field-container">
+                        <div class="field-grass">
+                            <!-- Linhas do campo -->
+                            <div class="center-circle"></div>
+                            <div class="center-line"></div>
+                            <div class="penalty-area left"></div>
+                            <div class="penalty-area right"></div>
+                            
+                            <!-- Posições -->
+                            <div class="positions-container">
+                                <div class="position-row goalkeeper">
+                                    <!-- Goleiro -->
+                                </div>
+                                <div class="position-row defense">
+                                    <!-- Zagueiros/Laterais -->
+                                </div>
+                                <div class="position-row midfield">
+                                    <!-- Meias -->
+                                </div>
+                                <div class="position-row attack">
+                                    <!-- Atacantes -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Estatísticas da escalação -->
+                <div class="lineup-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Jogadores Escalados</h3>
+                        <p class="stat-value" id="players-in-lineup">0/11</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <h3>Idade Média</h3>
+                        <p class="stat-value" id="avg-age-lineup">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Nota Média</h3>
+                        <p class="stat-value" id="avg-rating-lineup">0.0</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>Valor Total</h3>
+                        <p class="stat-value" id="total-value-lineup">R$ 0</p>
+                    </div>
+                </div>
+
+                <div class="lineup-actions">
+                    <button id="save-lineup" class="btn btn-corinthians">
+                        <i class="fas fa-save"></i> Salvar Escalação
+                    </button>
+                    <button id="auto-lineup" class="btn btn-secondary">
+                        <i class="fas fa-robot"></i> Escalação Automática
+                    </button>
+                    <button id="clear-lineup" class="btn btn-danger">
+                        <i class="fas fa-trash-alt"></i> Limpar Escalação
+                    </button>
+                    <button id="print-lineup" class="btn btn-success">
+                        <i class="fas fa-print"></i> Imprimir
+                    </button>
+                </div>
+
+                <!-- Lista de reservas -->
+                <div class="substitutes-section">
+                    <h3><i class="fas fa-exchange-alt"></i> BANCO DE RESERVAS</h3>
+                    <div class="substitutes-list" id="substitutes-list">
+                        <!-- Reservas serão carregadas aqui -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Informações do Clube -->
+            <section id="club-info-section" class="content-section">
+                <div class="club-hero">
+                    <h2><i class="fas fa-landmark"></i> SPORT CLUB CORINTHIANS PAULISTA</h2>
+                    <p class="club-motto">"Com muito orgulho, com muito amor"</p>
+                </div>
+
+                <div class="club-info-grid">
+                    <div class="info-card stadium-card">
+                        <div class="info-card-header">
+                            <i class="fas fa-stadium"></i>
+                            <h3>Neo Química Arena</h3>
+                        </div>
+                        <div class="info-card-content">
+                            <img src="https://assets.goal.com/images/v3/blt1e8865d80f3f11a0/neoquimicaarena.jpg?auto=webp&format=pjpg&width=3840&quality=60" alt="Neo Química Arena" class="stadium-img">
+                            <div class="stadium-info">
+                                <p><strong>Inauguração:</strong> 10 de maio de 2014</p>
+                                <p><strong>Capacidade:</strong> 49.205 espectadores</p>
+                                <p><strong>Localização:</strong> Itaquera, São Paulo-SP</p>
+                                <p><strong>Recorde de público:</strong> 49.205 (Brasileirão 2023)</p>
+                                <p><strong>Eventos históricos:</strong> Abertura da Copa 2014</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card history-card">
+                        <div class="info-card-header">
+                            <i class="fas fa-history"></i>
+                            <h3>História</h3>
+                        </div>
+                        <div class="info-card-content">
+                            <p>Fundado em 1º de setembro de 1910 por um grupo de operários do bairro do Bom Retiro, o Corinthians surgiu para democratizar o futebol paulistano, até então restrito à elite.</p>
+                            <p><strong>Destaques históricos:</strong></p>
+                            <ul>
+                                <li>1914: Primeiro título paulista</li>
+                                <li>1930: "Time do povo" se consolida</li>
+                                <li>1976: Primeiro Campeonato Brasileiro</li>
+                                <li>1990: Campeão brasileiro invicto</li>
+                                <li>2012: Ano do título da Libertadores e Mundial</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="info-card torcida-card">
+                        <div class="info-card-header">
+                            <i class="fas fa-users"></i>
+                            <h3>A Fiel Torcida</h3>
+                        </div>
+                        <div class="info-card-content">
+                            <p>Com aproximadamente 30 milhões de torcedores, a Fiel é uma das maiores torcidas do Brasil e do mundo.</p>
+                            <div class="torcida-stats">
+                                <div class="torcida-stat">
+                                    <h4>Gaviões da Fiel</h4>
+                                    <p>Fundada: 1969</p>
+                                </div>
+                                <div class="torcida-stat">
+                                    <h4>Camisa 12</h4>
+                                    <p>Maior organizada</p>
+                                </div>
+                                <div class="torcida-stat">
+                                    <h4>Estádio</h4>
+                                    <p>49 mil lugares</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card symbols-card">
+                        <div class="info-card-header">
+                            <i class="fas fa-flag"></i>
+                            <h3>Símbolos</h3>
+                        </div>
+                        <div class="info-card-content">
+                            <div class="symbols-grid">
+                                <div class="symbol">
+                                    <div class="symbol-circle" style="background: white; border: 3px solid black;">
+                                        <span style="color: black;">SCCP</span>
+                                    </div>
+                                    <p>Escudo Original</p>
+                                </div>
+                                <div class="symbol">
+                                    <div class="symbol-circle" style="background: black; color: white;">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <p>Mosqueteiro</p>
+                                </div>
+                                <div class="symbol">
+                                    <div class="symbol-circle" style="background: white; color: black;">
+                                        <i class="fas fa-anchor"></i>
+                                    </div>
+                                    <p>Âncora</p>
+                                </div>
+                                <div class="symbol">
+                                    <div class="symbol-circle" style="background: black; color: white;">
+                                        C
+                                    </div>
+                                    <p>Inicial</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Seção Ídolos -->
+            <section id="idols-section" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-crown"></i> ÍDOLOS DO TIMÃO</h2>
+                    <p class="section-subtitle">Os grandes nomes que fizeram história no Corinthians</p>
+                </div>
+
+                <div class="idols-gallery" id="idols-gallery">
+                    <!-- Ídolos serão carregados aqui -->
+                </div>
+            </section>
+
+            <!-- Seção Títulos -->
+            <section id="titles-section" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-trophy"></i> SALA DE TROFÉUS</h2>
+                    <p class="section-subtitle">Todas as conquistas do Sport Club Corinthians Paulista</p>
+                </div>
+
+                <div class="titles-container">
+                    <div class="titles-category">
+                        <h3><i class="fas fa-globe-americas"></i> COMPETIÇÕES INTERNACIONAIS</h3>
+                        <div class="titles-grid">
+                            <div class="trophy-card mundial">
+                                <div class="trophy-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="trophy-info">
+                                    <h4>Mundial de Clubes</h4>
+                                    <p class="trophy-years">2000 • 2012</p>
+                                    <p class="trophy-count">2 títulos</p>
+                                </div>
+                            </div>
+                            <div class="trophy-card libertadores">
+                                <div class="trophy-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="trophy-info">
+                                    <h4>Libertadores</h4>
+                                    <p class="trophy-years">2012</p>
+                                    <p class="trophy-count">1 título</p>
+                                </div>
+                            </div>
+                            <div class="trophy-card recopa">
+                                <div class="trophy-icon">
+                                    <i class="fas fa-medal"></i>
+                                </div>
+                                <div class="trophy-info">
+                                    <h4>Recopa Sul-Americana</h4>
+                                    <p class="trophy-years">2013</p>
+                                    <p class="trophy-count">1 título</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="titles-category">
+                        <h3><i class="fas fa-flag"></i> COMPETIÇÕES NACIONAIS</h3>
+                        <div class="titles-grid">
+                            <div class="trophy-card brasileirao">
+                                <div class="trophy-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="trophy-info">
+                                    <h4>Campeonato Brasileiro</h4>
+                                    <p class="trophy-years">1990, 1998, 1999, 2005, 2011, 2015, 2017</p>
+                                    <p class="trophy-count">7 títulos</p>
+                                </div>
+                            </div>
+                            <div class="trophy-card copa-brasil">
+                                <div class="trophy-icon">
+                                    <i class="fas fa-cup"></i>
+                                </div>
+                                <div class="trophy-info">
+                                    <h4>Copa do Brasil</h4>
+                                    <p class="trophy-years">1995, 2002, 2009</p>
+                                    <p class="trophy-count">3 títulos</p>
+                                </div>
+                            </div>
+                            <div class="trophy-card supercopa">
+                                <div class="trophy-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="trophy-info">
+                                    <h4>Supercopa do Brasil</h4>
+                                    <p class="trophy-years">1991</p>
+                                    <p class="trophy-count">1 título</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="titles-category">
+                        <h3><i class="fas fa-city"></i> COMPETIÇÕES ESTADUAIS</h3>
+                        <div class="titles-grid">
+                            <div class="trophy-card paulista">
+                                <div class="trophy-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="trophy-info">
+                                    <h4>Campeonato Paulista</h4>
+                                    <p class="trophy-years">30 conquistas</p>
+                                    <p class="trophy-count">Recordista</p>
+                                </div>
+                            </div>
+                            <div class="trophy-card ri-sp">
+                                <div class="trophy-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="trophy-info">
+                                    <h4>Torneio Rio-São Paulo</h4>
+                                    <p class="trophy-years">5 conquistas</p>
+                                    <p class="trophy-count">5 títulos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="titles-timeline">
+                        <h3><i class="fas fa-history"></i> LINHA DO TEMPO DAS CONQUISTAS</h3>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-year">1914</div>
+                                <div class="timeline-content">Primeiro título Paulista</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">1990</div>
+                                <div class="timeline-content">Primeiro Brasileirão (invicto)</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2000</div>
+                                <div class="timeline-content">Primeiro Mundial</div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-year">2012</div>
+                                <div class="timeline-content">Libertadores e Bi-Mundial</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal de jogador -->
+        <div id="player-modal" class="modal">
+            <div class="modal-content corinthians-modal">
+                <span class="close-modal">&times;</span>
+                <div class="modal-header">
+                    <h2><i class="fas fa-user-plus"></i> <span id="modal-title">NOVO JOGADOR</span></h2>
+                    <p class="modal-subtitle">Adicione um jogador ao elenco do Corinthians</p>
+                </div>
+                <form id="player-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="player-name"><i class="fas fa-user"></i> Nome Completo *</label>
+                            <input type="text" id="player-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="player-number"><i class="fas fa-tshirt"></i> Número da Camisa *</label>
+                            <input type="number" id="player-number" min="1" max="99" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="player-position"><i class="fas fa-map-marker-alt"></i> Posição *</label>
+                            <select id="player-position" required>
+                                <option value="">Selecione...</option>
+                                <option value="GOL">Goleiro</option>
+                                <option value="ZAG">Zagueiro</option>
+                                <option value="LAT">Lateral</option>
+                                <option value="VOL">Volante</option>
+                                <option value="MEI">Meia</option>
+                                <option value="ATA">Atacante</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="player-age"><i class="fas fa-birthday-cake"></i> Idade *</label>
+                            <input type="number" id="player-age" min="16" max="45" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="player-nationality"><i class="fas fa-flag"></i> Nacionalidade</label>
+                            <input type="text" id="player-nationality" value="Brasileiro">
+                        </div>
+                        <div class="form-group">
+                            <label for="player-value"><i class="fas fa-money-bill-wave"></i> Valor de Mercado (R$)</label>
+                            <input type="number" id="player-value" min="0" value="1000000">
+                        </div>
+                        <div class="form-group">
+                            <label for="player-rating"><i class="fas fa-star"></i> Avaliação (0-10)</label>
+                            <div class="rating-container">
+                                <input type="range" id="player-rating" min="0" max="10" step="0.5" value="7.0">
+                                <span id="rating-value">7.0</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="player-status"><i class="fas fa-heartbeat"></i> Status</label>
+                            <select id="player-status">
+                                <option value="disponivel">Disponível</option>
+                                <option value="lesionado">Lesionado</option>
+                                <option value="suspenso">Suspenso</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="player-notes"><i class="fas fa-sticky-note"></i> Observações</label>
+                        <textarea id="player-notes" rows="3" placeholder="Características do jogador, histórico, etc..."></textarea>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-secondary" id="cancel-modal">Cancelar</button>
+                        <button type="submit" class="btn btn-corinthians" id="save-player">
+                            <i class="fas fa-save"></i> Salvar Jogador
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal de detalhes -->
+        <div id="details-modal" class="modal">
+            <div class="modal-content details-modal">
+                <span class="close-details-modal">&times;</span>
+                <div id="player-details"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="https://logodownload.org/wp-content/uploads/2016/11/Corinthians-logo-escudo.png" alt="Corinthians" class="footer-escudo">
+                    <div class="footer-text">
+                        <h3>SPORT CLUB CORINTHIANS PAULISTA</h3>
+                        <p>Sistema de Gerenciamento de Elenco</p>
+                    </div>
+                </div>
+                <div class="footer-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Neo Química Arena - São Paulo/SP</p>
+                    <p><i class="fas fa-calendar-alt"></i> Fundado em 1º de setembro de 1910</p>
+                    <p><i class="fas fa-users"></i> Maior torcida do Brasil</p>
+                </div>
+                <div class="footer-copyright">
+                    <p>© 2024 Sistema Corinthians - Desenvolvido com <i class="fas fa-heart" style="color: #ff0000;"></i> para a Fiel Torcida</p>
+                    <p class="footer-motto">"Vai, Corinthians! O Campeão dos Campeões!"</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js?v=20240126-6"></script>
+</body>
+</html>
